@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#7c3aed">
+<meta name="color-scheme" content="light">
+<title>منصة الرياضيات — د. حاتم نصر فريد</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap">
+<style>
+:root{color-scheme:light;--bg:#f3f8ff;--card:#fff;--tx:#2a1f4d;--mu:#7a6f99;--p1:#7c3aed;--p2:#ec4899;--p3:#f59e0b;--ok:#10b981;--bad:#ef4444;--bd:#f1e4f7;box-sizing:border-box;padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Cairo","Segoe UI",Tahoma,sans-serif;line-height:1.9;font-size:1.02rem}
+.hero{background:linear-gradient(135deg,var(--p1),var(--p2) 60%,var(--p3));color:#fff;padding:calc(22px + env(safe-area-inset-top,0px)) 18px 54px;text-align:center;border-radius:0 0 34px 34px;position:relative;overflow:hidden}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.14)}
+.hero::before{width:170px;height:170px;top:-60px;left:-40px}.hero::after{width:120px;height:120px;bottom:-40px;right:-20px}
+.logo{font-size:2.6rem;line-height:1.2;position:relative}
+.hero h1{margin:2px 0;font-size:1.5rem;font-weight:800;position:relative}
+.hero .by{font-size:1.02rem;opacity:.95;position:relative}
+.hero .sym{letter-spacing:6px;opacity:.85;font-size:1.1rem;margin-top:6px;position:relative}
+main{max-width:640px;margin:-30px auto 0;padding:0 14px 20px;position:relative}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:16px;margin-bottom:12px;box-shadow:0 6px 18px rgba(124,58,237,.10)}
+.chip{display:inline-block;background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;border-radius:99px;padding:2px 14px;font-size:.9rem;margin-bottom:10px}
+h2{font-size:1.1rem;margin:14px 4px 8px;font-weight:800}
+h2.in{margin:0 0 8px;color:var(--p1)}
+.mu{color:var(--mu);font-size:.9rem}.err{color:var(--bad);min-height:1.6em}
+.item{display:flex;justify-content:space-between;align-items:center;gap:10px;border-right:6px solid var(--p1)}
+.item.ex{border-right-color:var(--p2)}
+.ico{font-size:1.7rem}
+input[type=text],textarea{width:100%;font:inherit;padding:12px;border-radius:14px;border:2px solid var(--bd);background:var(--bg);color:var(--tx);margin:8px 0;text-align:center}
+textarea{min-height:130px;text-align:right}
+button{font:inherit;font-weight:600;padding:10px 20px;border-radius:14px;border:0;background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;cursor:pointer;box-shadow:0 4px 12px rgba(236,72,153,.3)}
+button.g{background:var(--card);color:var(--p1);border:2px solid var(--bd);box-shadow:none}
+.bar{height:10px;border-radius:99px;background:var(--bd);overflow:hidden;margin-bottom:12px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--p3),var(--p2),var(--p1));transition:width .3s}
+.q{border-radius:16px;padding:12px 14px;margin-top:12px}
+.t0{background:#fff4d6}.t1{background:#e3f6ec}.t2{background:#ece6ff}.t3{background:#ffe6ee}
+label.o{display:block;padding:8px 12px;margin:6px 0;border:2px solid #fff;background:#fff;border-radius:12px;cursor:pointer}
+label.o:has(input:checked){border-color:var(--p2);background:rgba(236,72,153,.10)}
+label.o input{margin-left:8px;accent-color:var(--p2)}
+.score{width:130px;height:130px;border-radius:50%;margin:6px auto 10px;display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--ok),var(--p1))}
+.c{text-align:center}
+/* الرموز الرياضية: من اليمين لليسار */
+.m{direction:rtl;unicode-bidi:isolate;font-weight:600;white-space:nowrap;color:var(--p1)}
+.m sup{font-size:.7em;vertical-align:super;line-height:0}
+.m sub{font-size:.7em;vertical-align:sub;line-height:0}
+.tm{position:sticky;top:0;z-index:5;background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;border-radius:14px;padding:8px 14px;margin-bottom:12px;text-align:center;font-weight:800;box-shadow:0 4px 12px rgba(124,58,237,.3)}
+.tm.w{background:var(--bad)}
+.fr{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 3px;line-height:1.3;font-size:.9em}
+.fr b{font-weight:600;padding:0 4px}.fr b:first-child{border-bottom:2px solid currentColor}
+pre{white-space:pre-wrap;font:inherit;margin:0}
+.foot{text-align:center;color:var(--mu);font-size:.85rem;padding:10px 14px calc(16px + env(safe-area-inset-bottom,0px))}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="logo">📐</div>
+  <h1>منصة الرياضيات</h1>
+  <div class="by">د. حاتم نصر فريد</div>
+  <div class="sym">∑ ∫ π √ ∞</div>
+</header>
+<main>
+<div class="card" id="who" hidden></div>
+<div id="app"></div>
+</main>
+<div class="foot">منصة الرياضيات — إعداد د. حاتم نصر فريد<div id="cs"></div></div>
+<script src="codes.js"></script>
+<script>
+/* ======== بيانات المنصة: الأكواد والدروس والامتحانات (بنحدّثها سوا) ========
+   الرموز: اكتب المعادلة بين علامتي $ ... $ ، والأس بعلامة ^ مثل س^٣ أو س^{ن − ١}
+   والكسر بالشكل {البسط|المقام} */
+const DATA={
+  codes:window.CODES||{"1001":"طالب تجريبي ١","1002":"طالب تجريبي ٢","1003":"طالب تجريبي ٣"},
+  lessons:[
+    {id:"l1",title:"قاعدة القوة في المشتقة",
+     body:"إذا كانت $د(س) = س^ن$ فإن $د′(س) = ن × س^{ن − ١}$\n\nمثال: مشتقة $س^٣$ تساوي $٣س^٢$\n\nمثال آخر: مشتقة $٥س^٢$ تساوي $١٠س$\n\nتدريب: أوجد مشتقة $س^٥$"}
+  ],
+  exams:[
+    {id:"e1",title:"امتحان تجريبي: المشتقة",qs:[
+      {q:"مشتقة الدالة $د(س) = س^٣$ هي:",o:["$س^٢$","$٣س^٢$","$٣س$","$س^٤$"],a:1},
+      {q:"مشتقة الدالة الثابتة $د(س) = ٥$ تساوي:",o:["$٥$","$١$","$٠$","غير موجودة"],a:2},
+      {q:"مشتقة الدالة $د(س) = ٢س + ١$ تساوي:",o:["$١$","$٢س$","$٢$","$٣$"],a:2},
+      {q:"قيمة مشتقة الدالة $د(س) = س^٢$ عند $س = ٣$ تساوي:",o:["$٣$","$٦$","$٩$","$١٢$"],a:1},
+      {q:"مشتقة الدالة $د(س) = س^٤$ هي:",o:["$٤س^٣$","$٤س^٤$","$س^٣$","$٣س^٤$"],a:0}]},
+    {id:"e2",title:"اختبار المتتابعات الحسابية",minutes:90,qs:[
+      {q:"أي المتتابعات الآتية متتابعة حسابية؟",o:["$(٢ ، ٥ ، ٨ ، ١١ ، …)$","$(١ ، ٢ ، ٤ ، ٨ ، …)$","$(١ ، ٤ ، ٩ ، ١٦ ، …)$","$(٣ ، ٦ ، ١٢ ، ٢٤ ، …)$"],a:0},
+      {q:"أساس المتتابعة الحسابية $(٧ ، ١١ ، ١٥ ، ١٩ ، …)$ يساوي:",o:["$٣$","$٤$","$٥$","$٨$"],a:1},
+      {q:"أساس المتتابعة الحسابية $(١٠ ، ٧ ، ٤ ، ١ ، …)$ يساوي:",o:["$٣$","$٧$","$−٧$","$−٣$"],a:3},
+      {q:"إذا كان الحد العام لمتتابعة هو $ح_ن = ٣ن + ٢$ فإن حدها الأول يساوي:",o:["$٢$","$٥$","$٣$","$٨$"],a:1},
+      {q:"إذا كان $ح_ن = ٥ن − ٣$ فإن $ح_{١٠}$ يساوي:",o:["$٤٥$","$٥٠$","$٥٣$","$٤٧$"],a:3},
+      {q:"الحد الخامس عشر في المتتابعة $(٣ ، ٧ ، ١١ ، …)$ يساوي:",o:["$٥٩$","$٥٥$","$٦٣$","$٦١$"],a:0},
+      {q:"الحد العاشر في المتتابعة $(٢٠ ، ١٧ ، ١٤ ، …)$ يساوي:",o:["$−١٠$","$−٤$","$−٧$","$٧$"],a:2},
+      {q:"متتابعة حسابية فيها $ح_٣ = ١١$ ، $ح_٥ = ١٧$ فإن أساسها يساوي:",o:["$٢$","$٣$","$٤$","$٦$"],a:1},
+      {q:"متتابعة حسابية فيها $ح_٢ = ٩$ ، $ح_٦ = ٢١$ فإن حدها الأول يساوي:",o:["$٦$","$٣$","$٩$","$١٢$"],a:0},
+      {q:"ترتيب الحد الذي قيمته $٤٣$ في المتتابعة $(٣ ، ٧ ، ١١ ، …)$ هو:",o:["$١٠$","$١٢$","$١٣$","$١١$"],a:3},
+      {q:"الوسط الحسابي بين العددين $٧$ و $١٩$ يساوي:",o:["$١٢$","$١٤$","$١٣$","$٢٦$"],a:2},
+      {q:"إذا أُدخلت ثلاثة أوساط حسابية بين العددين $٤$ و $٢٠$ فإن الوسط الثاني يساوي:",o:["$٨$","$١٠$","$١٢$","$١٦$"],a:2},
+      {q:"مجموع أول $١٠$ حدود من المتتابعة $(٢ ، ٤ ، ٦ ، …)$ يساوي:",o:["$١٠٠$","$١٢٠$","$٢٢٠$","$١١٠$"],a:3},
+      {q:"مجموع أول $٢٠$ حدًّا من المتتابعة $(١ ، ٣ ، ٥ ، …)$ يساوي:",o:["$٢٠٠$","$٣٠٠$","$٤٠٠$","$٤٢٠$"],a:2},
+      {q:"مجموع الأعداد الطبيعية من $١$ إلى $١٠٠$ يساوي:",o:["$٥٠٠٠$","$٥١٠٠$","$٥٥٠٠$","$٥٠٥٠$"],a:3},
+      {q:"مجموع $١٢$ حدًّا من متتابعة حسابية حدها الأول $٣$ وحدها الأخير $٥٣$ يساوي:",o:["$٣٠٦$","$٣٣٦$","$٣٦٦$","$٦٧٢$"],a:1},
+      {q:"إذا كان مجموع أول $ن$ من حدود متتابعة هو $م_ن = ن^٢ + ٢ن$ فإن حدها الأول يساوي:",o:["$٣$","$١$","$٤$","$٥$"],a:0},
+      {q:"في المتتابعة التي مجموع أول $ن$ من حدودها $م_ن = ن^٢ + ٢ن$ ، فإن حدها الثاني يساوي:",o:["$٨$","$٧$","$٣$","$٥$"],a:3},
+      {q:"عدد حدود المتتابعة الحسابية $(٥ ، ٩ ، ١٣ ، … ، ٨١)$ يساوي:",o:["$٢١$","$١٩$","$٢٠$","$٢٢$"],a:2},
+      {q:"ثلاثة أعداد تكوّن متتابعة حسابية ومجموعها $٢١$ ، فإن العدد الأوسط يساوي:",o:["$٧$","$٥$","$٣$","$٩$"],a:0},
+      {q:"إذا كانت $(س ، ٧ ، ١١)$ ثلاثة حدود متتالية في متتابعة حسابية فإن $س$ تساوي:",o:["$٤$","$٣$","$٥$","$٩$"],a:1},
+      {q:"إذا كانت $(٢س + ١ ، ٥س − ٢ ، ٧س)$ ثلاثة حدود متتالية في متتابعة حسابية فإن $س$ تساوي:",o:["$٣$","$٤$","$٥$","$٦$"],a:2},
+      {q:"متتابعة حسابية أساسها $٤$ ومجموع أول $٥$ حدود منها $٧٥$ ، فإن حدها الأول يساوي:",o:["$٧$","$٥$","$٦$","$٨$"],a:0},
+      {q:"عدد الحدود اللازم أخذها من المتتابعة $(٢ ، ٥ ، ٨ ، …)$ ابتداءً من حدها الأول ليكون مجموعها $١٥٥$ هو:",o:["$٨$","$٩$","$١٠$","$١٢$"],a:2},
+      {q:"مجموع الأعداد الزوجية الموجبة الأقل من $١٠٠$ يساوي:",o:["$٢٥٠٠$","$٢٤٥٠$","$٢٥٥٠$","$٤٩٠٠$"],a:1}]}
+  ]
+};
+/* ======== نهاية البيانات ======== */
+const SCHED=window.SCHEDULE||{};
+const nm=c=>{const v=DATA.codes[c];return typeof v==="string"?v:v.n},perm=c=>typeof DATA.codes[c]==="object"&&!!DATA.codes[c].p;
+const when=ms=>new Date(ms).toLocaleString("ar-EG",{timeZone:"Africa/Cairo",dateStyle:"full",timeStyle:"short"});
+const $=s=>document.querySelector(s),app=$("#app");
+const AR="٠١٢٣٤٥٦٧٨٩",ar=n=>String(n).replace(/\d/g,d=>AR[d]),en=s=>s.replace(/[٠-٩]/g,d=>AR.indexOf(d));
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function fmt(t){
+  return esc(t).replace(/\$([^$]+)\$/g,(_,m)=>'<span class="m">'+m
+    .replace(/_\{([^}]+)\}/g,"<sub>$1</sub>")
+    .replace(/_([٠-٩0-9]+|[^\s<{])/g,"<sub>$1</sub>")
+    .replace(/\^\{([^}]+)\}/g,"<sup>$1</sup>")
+    .replace(/\^([٠-٩0-9]+|[^\s<])/g,"<sup>$1</sup>")
+    .replace(/\{([^|{}]+)\|([^|{}]+)\}/g,'<span class="fr"><b>$1</b><b>$2</b></span>')+"</span>");
+}
+let who=null,code="";
+const target=()=>location.hash.slice(1);
+const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+store.del=k=>{try{localStorage.removeItem(k)}catch(e){}};
+let tmr=null,timedOut=false;
+function stopTimer(){if(tmr){clearInterval(tmr);tmr=null}}
+function startTimer(e){
+  stopTimer();const cl=perm(code)?0:(SCHED[e.id]||{}).close;if(!e.minutes&&!cl)return;
+  const k="st:"+code+":"+e.id;let st=store.get(k);if(!st){st=Date.now();store.set(k,st)}
+  let end=e.minutes?st+e.minutes*60000:Infinity;if(cl)end=Math.min(end,cl);
+  app.insertAdjacentHTML("afterbegin",'<div class="tm" id="tm"></div>');
+  const tick=()=>{const r=end-Date.now();
+    if(r<=0){stopTimer();timedOut=true;submit(e.id,true);return}
+    const m=Math.floor(r/60000),s=Math.floor(r%60000/1000);
+    const el=$("#tm");if(!el)return stopTimer();
+    el.textContent="⏱ الوقت المتبقي: "+ar(String(m).padStart(2,"0")+":"+String(s).padStart(2,"0"));
+    el.classList.toggle("w",r<300000)};
+  tick();tmr=setInterval(tick,1000);
+}
+function login(msg){
+  $("#cs").textContent=window.CODES?"✓ ملف الأكواد محمّل ("+ar(Object.keys(window.CODES).length)+" كود)":"⚠ ملف codes.js غير محمّل — الأكواد التجريبية فقط";
+  $("#who").hidden=true;
+  app.innerHTML=`<div class="card c"><span class="chip">أهلًا بك 👋</span><div><b>اكتب كود الطالب الخاص بك</b></div>
+  <input type="text" id="c" placeholder="مثال: ١٠٠١" inputmode="numeric" autocomplete="off">
+  <div class="err">${msg||""}</div><button onclick="go()">دخول</button></div>`;
+  const s=store.get("code");if(s&&DATA.codes[s]&&!msg)$("#c").value=ar(s);
+}
+function go(){
+  const c=en($("#c").value.trim());
+  if(!DATA.codes[c])return login("الكود غير صحيح، راجع الكود مع المعلم.");
+  code=c;who=nm(c);store.set("code",c);route();
+}
+function head(){const w=$("#who");w.hidden=false;w.innerHTML=`<b>👤 ${esc(who)}</b> <span class="mu">— كود ${ar(code)}</span>`}
+function route(){
+  head();const t=target(),e=DATA.exams.find(x=>x.id===t),l=DATA.lessons.find(x=>x.id===t);
+  if(e)return quiz(e);if(l)return lesson(l);home();
+}
+function home(){
+  const done=store.get("res:"+code)||{};
+  app.innerHTML=(DATA.lessons.length?`<h2>📚 الدروس</h2>`+DATA.lessons.map(l=>`<div class="card item"><span class="ico">📖</span><b style="flex:1">${fmt(l.title)}</b><button onclick="open_('${l.id}')">فتح</button></div>`).join(""):"")+
+  (DATA.exams.length?`<h2>📝 الامتحانات</h2>`+DATA.exams.map(e=>`<div class="card item ex"><span class="ico">🎯</span><div style="flex:1"><b>${fmt(e.title)}</b>${done[e.id]!=null?`<div class="mu">⭐ درجتك السابقة: ${ar(done[e.id])} من ${ar(e.qs.length)}</div>`:`<div class="mu">${ar(e.qs.length)} سؤال${e.minutes?" — ⏱ "+ar(e.minutes)+" دقيقة":""}</div>${stat(e)}`}</div><button onclick="open_('${e.id}')">ابدأ</button></div>`).join(""):"");
+}
+function stat(e){
+  if(perm(code))return "";const sc=SCHED[e.id]||{},n=Date.now();
+  if(!perm(code)&&store.get("u:"+code+":"+e.id))return '<div class="mu">🚫 تم استخدام المحاولة</div>';
+  if(sc.open&&n<sc.open)return '<div class="mu">⏳ يفتح: '+when(sc.open)+'</div>';
+  if(sc.close&&n>sc.close)return '<div class="mu">🔒 انتهى الموعد</div>';
+  return sc.close?'<div class="mu">🕒 يُغلق: '+when(sc.close)+'</div>':"";
+}
+function open_(id){location.hash=id;route()}
+function back(){stopTimer();history.replaceState(null,"",location.pathname+location.search);home()}
+function lesson(l){
+  app.innerHTML=`<div class="card"><span class="chip">📖 درس</span><h2 class="in">${fmt(l.title)}</h2><pre>${fmt(l.body)}</pre></div><button class="g" onclick="back()">⬅ رجوع للقائمة</button>`;
+}
+function quiz(e){
+  const P=perm(code),sc=P?{}:(SCHED[e.id]||{}),n=Date.now(),u="u:"+code+":"+e.id;
+  const block=m=>{app.innerHTML=`<div class="card c"><h2 class="in">${fmt(e.title)}</h2><p>${m}</p><button class="g" onclick="back()">رجوع للقائمة</button></div>`};
+  if(sc.open&&n<sc.open)return block("⏳ الامتحان لسه ما فتحش. موعد الفتح: <b>"+when(sc.open)+"</b>");
+  if(sc.close&&n>sc.close)return block("🔒 انتهى موعد الامتحان.");
+  if(!P&&store.get(u))return block("🚫 تم استخدام محاولتك الوحيدة في هذا الامتحان، ومينفعش تدخل تاني.");
+  if(P&&e.minutes&&store.get("st:"+code+":"+e.id))return begin(e);
+  if(P&&!e.minutes)return begin(e);
+  app.innerHTML=`<div class="card c"><span class="chip">${e.minutes?"⏱ امتحان بوقت":"📝 امتحان"}</span><h2 class="in">${fmt(e.title)}</h2>
+  <p>${ar(e.qs.length)} سؤال${e.minutes?" — مدة الامتحان <b>"+ar(e.minutes)+" دقيقة</b>":""}</p>
+  ${sc.close?`<p class="mu">يُغلق: ${when(sc.close)}</p>`:""}
+  ${P?"":`<p class="err"><b>لك محاولة واحدة فقط.</b> لو خرجت من الامتحان أو قفلت الصفحة مش هتقدر تدخل تاني.</p>`}
+  <button onclick="beginExam('${e.id}')">ابدأ الآن</button> <button class="g" onclick="back()">رجوع</button></div>`;
+}
+function begin(e){if(!perm(code))store.set("u:"+code+":"+e.id,1);quiz0(e);startTimer(e)}
+function beginExam(id){begin(DATA.exams.find(x=>x.id===id))}
+function quiz0(e){
+  app.innerHTML=`<div class="card"><span class="chip">🎯 امتحان</span><h2 class="in">${fmt(e.title)}</h2>
+  <div class="bar"><i id="pb"></i></div>`+e.qs.map((q,i)=>`<div class="q t${i%4}"><b>${ar(i+1)}. ${fmt(q.q)}</b>`+
+   q.o.map((o,j)=>`<label class="o"><input type="radio" name="q${i}" value="${j}" onchange="prog(${e.qs.length})"> ${fmt(o)}</label>`).join("")+`</div>`).join("")+
+   `<div class="err" id="e"></div><button onclick="submit('${e.id}')">✅ تسليم الإجابات</button></div><button class="g" onclick="back()">⬅ رجوع للقائمة</button>`;
+}
+function prog(n){const k=document.querySelectorAll("input[type=radio]:checked").length;$("#pb").style.width=(k/n*100)+"%"}
+function submit(id,force){
+  const e=DATA.exams.find(x=>x.id===id);
+  const ans=e.qs.map((q,i)=>{const r=document.querySelector(`input[name=q${i}]:checked`);return r?+r.value:null});
+  if(!force&&ans.includes(null))return $("#e").textContent="لسه فيه أسئلة ماتجاوبش عليها.";
+  stopTimer();store.del('st:'+code+':'+id);
+  const wrong=[];ans.forEach((a,i)=>{if(a!==e.qs[i].a)wrong.push(i+1)});
+  const n=e.qs.length,score=n-wrong.length;
+  const d=store.get("res:"+code)||{};d[id]=score;store.set("res:"+code,d);
+  const title=e.title.replace(/\$/g,"");
+  const txt=`${title}\nالاسم: ${who}\nالكود: ${ar(code)}\nالدرجة: ${ar(score)} من ${ar(n)}\nالإجابات: ${ans.map(a=>a==null?"—":ar(a+1)).join(" - ")}`;
+  const msg=score===n?"🎉 ممتاز، كل الإجابات صحيحة!":score>=n/2?"👏 أحسنت، كمّل بنفس المستوى!":"💪 حاول تاني بعد مراجعة الدرس.";
+  app.innerHTML=`<div class="card c">${timedOut?`<div class="err"><b>⏰ انتهى الوقت وتم تسليم إجاباتك تلقائيًا</b></div>`:""}<div class="mu">درجتك</div><div class="score">${ar(score)} / ${ar(n)}</div>
+  <div><b>${msg}</b></div>${wrong.length?`<p class="mu">الأسئلة اللي فيها خطأ: ${wrong.map(ar).join("، ")}</p>`:""}</div>
+  <div class="card"><b>📩 ابعت النتيجة للمعلم</b><div class="mu">انسخ النص وابعته على واتساب:</div>
+  <textarea id="t" readonly>${esc(txt)}</textarea><button onclick="cp()">نسخ النص</button> <span id="m" class="mu"></span></div>
+  <button class="g" onclick="back()">⬅ رجوع للقائمة</button>`;
+  window.scrollTo(0,0);timedOut=false;
+}
+function cp(){
+  const t=$("#t");t.select();const ok=()=>$("#m").textContent="تم النسخ ✓";
+  try{navigator.clipboard.writeText(t.value).then(ok,()=>{document.execCommand("copy");ok()})}
+  catch(e){try{document.execCommand("copy");ok()}catch(x){$("#m").textContent="اضغط مطولًا على النص وانسخه"}}
+}
+login();
+</script>
+</body>
+</html>
